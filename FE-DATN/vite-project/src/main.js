@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
-import Sidebar from './components/Sidebar.vue'
+import router from './routes'
+import './style.css'
 
-const app = createApp(App)
-app.component('Sidebar', Sidebar)
-app.mount('#app')
+createApp(App)
+  .use(router)
+  .mount('#app')

@@ -2,6 +2,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const open = ref(false)
+const emit = defineEmits(['update:open'])
 const userMenuOpen = ref(false)
 const drawerRef = ref(null)
 const overlayRef = ref(null)
@@ -11,6 +12,7 @@ const userMenuRef = ref(null)
 function showDrawer(e) {
   e && e.stopPropagation()
   open.value = true
+  emit('update:open', true)
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
   document.body.style.overflow = 'hidden'
   document.body.style.paddingRight = `${scrollbarWidth}px`
@@ -18,6 +20,7 @@ function showDrawer(e) {
 
 function hideDrawer() {
   open.value = false
+  emit('update:open', false)
   document.body.style.overflow = ''
   document.body.style.paddingRight = ''
 }
@@ -57,7 +60,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-100 dark:bg-gray-300">
+  <div class="h-24 bg-gray-100 dark:bg-gray-300">
   <!-- Wrapper -->
   <div class="text-left transition-all duration-300" :class="open ? 'ml-70' : 'ml-0'">
     <!-- Navbar -->
@@ -175,15 +178,95 @@ onBeforeUnmount(() => {
             />
           </button>
       <!-- Dropdown menu -->
-      <transition name="fade">
-            <div
-              v-if="userMenuOpen"
-              ref="userMenuRef"
-              class="absolute right-0 top-12 z-50 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-200"
-            >
-              <a @click="$emit('open-register'); userMenuOpen = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Register</a>
-            </div>
-          </transition>
+<transition name="fade-scale">
+  <div
+    v-if="userMenuOpen"
+    ref="userMenuRef"
+    class="absolute right-0 top-14 z-50 w-56 bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-100 overflow-hidden animate-dropdown"
+  >
+    <!-- Header -->
+    <div class="px-4 py-3 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-b border-gray-100">
+      <p class="text-sm font-semibold text-gray-800">Xin chào 👋</p>
+      <p class="text-xs text-gray-500">Chúc bạn một ngày tốt lành!</p>
+    </div>
+
+    <!-- Menu items -->
+    <div class="py-2">
+      <!-- Thông Tin -->
+        <a
+          @click="$emit('open-profile'); userMenuOpen = false"
+          class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 group"
+        >
+          <svg
+            class="w-5 h-5 mr-2 text-gray-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-transform duration-200"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >        
+            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+          </svg>
+          Thông Tin
+        </a>
+
+      <!-- Cài Đặt -->
+      <a
+        href="#"
+        class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 group"
+      >
+        <svg
+          class="w-5 h-5 mr-2 text-gray-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-transform duration-200"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13v-2a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L14 4.757V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L4.929 6.343a1 1 0 0 0 0 1.414l.536.536L4.757 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535 1.707.707V20a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H20a1 1 0 0 0 1-1Z"/>
+  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+        </svg>
+        Cài Đặt
+      </a>
+
+      <!-- Đường kẻ -->
+      <div class="border-t border-gray-200 my-2"></div>
+
+      <!-- Register -->
+      <a
+        @click="$emit('open-register'); userMenuOpen = false"
+        class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 group"
+      >
+        <svg
+          class="w-5 h-5 mr-2 text-gray-400 group-hover:text-blue-500 group-hover:-translate-x-1 transition-transform duration-200"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12h4m-2 2v-4M4 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+        </svg>
+        Đăng Ký
+      </a>
+
+      <!-- Đăng Xuất -->
+      <a
+        href="#"
+        class="flex items-center px-4 py-2 text-sm text-red-600 hover:bg-red-50 hover:text-red-700 transition-all duration-200 group"
+      >
+        <svg
+          class="w-5 h-5 mr-2 text-red-400 group-hover:text-red-600 group-hover:-translate-x-1 transition-transform duration-200"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"/>
+        </svg>
+        Đăng Xuất
+      </a>
+    </div>
+  </div>
+</transition>
         </div>
       </div>    
     </nav>
@@ -266,4 +349,36 @@ onBeforeUnmount(() => {
 .slide-right-enter-active, .slide-right-leave-active {
   transition: transform 200ms ease, opacity 150ms ease;
 }
+
+/* Dropdown scale fade */
+.fade-scale-enter-from,
+.fade-scale-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
+.fade-scale-enter-to,
+.fade-scale-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}
+.fade-scale-enter-active,
+.fade-scale-leave-active {
+  transition: all 0.2s ease;
+}
+
+/* Hiệu ứng nổi mượt */
+@keyframes dropdown {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.animate-dropdown {
+  animation: dropdown 0.25s ease-out;
+}
+
 </style>
