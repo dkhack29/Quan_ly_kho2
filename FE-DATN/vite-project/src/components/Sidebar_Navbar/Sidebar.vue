@@ -64,13 +64,13 @@ onBeforeUnmount(() => {
   <!-- Wrapper -->
   <div class="text-left transition-all duration-300" :class="open ? 'ml-70' : 'ml-0'">
     <!-- Navbar -->
-    <nav class="bg-white dark:bg-gray-300 h-20">
-      <div class="max-w-screen-xl mx-auto px-4 py-3 flex items-center justify-between">
+    <nav class="bg-white dark:bg-gray-100 shadow h-20">
+      <div class="max-w-screen-xl mx-auto px-4 flex items-center justify-between">
         <!-- Left: Drawer button + Logo -->
         <div class="flex items-center gap-3">
           <button
             @click="showDrawer"
-            class="inline-flex items-center text-gray-700 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-slate-300/30 font-medium rounded-lg text-sm px-3 py-2 focus:outline-none"
+            class="inline-flex items-center text-gray-700 bg-gray-100 hover:bg-gray-400 focus:ring-4 focus:ring-slate-300/30 font-medium rounded-lg text-sm px-3 py-2 focus:outline-none"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
             <input
               type="text"
               placeholder="Tìm kiếm..."
-              class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm text-gray-700 placeholder-gray-400"
+              class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 bg-gray-50 focus:ring-2 focus:ring-blue-300 focus:border-blue-300 focus:outline-none shadow-sm text-gray-700 placeholder-gray-400"
             />
             <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-400"
                  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -114,7 +114,7 @@ onBeforeUnmount(() => {
       </svg>
       <!-- Icon hover -->
       <svg xmlns="http://www.w3.org/2000/svg"
-           class="absolute inset-0 w-6 h-6 text-gray-600 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition duration-300"
+           class="absolute inset-0 w-6 h-6 text-blue-400 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition duration-300"
            viewBox="0 0 24 24" fill="currentColor">
         <path d="M12 22a2 2 0 0 0 2-2H10a2 2 0 0 0 2 2ZM18 16V9a6 6 0 1 0-12 0v7l-2 2v1h16v-1l-2-2Z"/>
       </svg>
@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
               d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
       </svg>
       <svg xmlns="http://www.w3.org/2000/svg"
-           class="absolute inset-0 w-6 h-6 text-gray-600 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition duration-300"
+           class="absolute inset-0 w-6 h-6 text-blue-400 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition duration-300"
            viewBox="0 0 24 24" fill="currentColor">
         <path d="M1.5 6.75A2.25 2.25 0 0 1 3.75 4.5h16.5a2.25 2.25 0 0 1 2.25 2.25v.63l-10.5 6.563L1.5 7.38v-.63ZM1.5 9.75v7.5A2.25 2.25 0 0 0 3.75 19.5h16.5a2.25 2.25 0 0 0 2.25-2.25v-7.5l-10.5 6.563L1.5 9.75Z"/>
       </svg>
@@ -148,7 +148,7 @@ onBeforeUnmount(() => {
               d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
       </svg>
       <svg xmlns="http://www.w3.org/2000/svg"
-           class="absolute inset-0 w-6 h-6 text-gray-600 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition duration-300"
+           class="absolute inset-0 w-6 h-6 text-blue-400 opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition duration-300"
            viewBox="0 0 24 24" fill="currentColor">
         <path d="M6.75 3A.75.75 0 0 0 6 3.75v.75H5.25A2.25 2.25 0 0 0 3 6.75v12A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75v-12A2.25 2.25 0 0 0 18.75 4.5H18V3.75a.75.75 0 0 0-1.5 0V4.5h-9V3.75A.75.75 0 0 0 6.75 3Z"/>
         <path d="M5.25 8.25h13.5v10.5H5.25V8.25Z"/>
@@ -300,7 +300,7 @@ onBeforeUnmount(() => {
         </h5>
         <button
           @click.stop="hideDrawer"
-          class="text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-sky-400"
+          class="text-gray-500 hover:bg-gray-100 dark:hover:bg-slate-300 rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-sky-400"
           aria-label="Close menu"
         >
           <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -316,15 +316,15 @@ onBeforeUnmount(() => {
 
       <nav class="py-2">
         <ul class="space-y-2 font-medium">
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Nhà Cung Cấp</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Tạo Phiếu Xuất</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Tạo Phiếu Nhập</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Loại Hàng Hóa</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Hàng Hóa</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Nhân Viên</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Nhà Kho</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Thống Kê, Báo Cáo</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Xuất File, Nhập File</a></li>
+          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-blue-100">Nhà Cung Cấp</a></li>
+          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-blue-100">Tạo Phiếu Xuất</a></li>
+          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-blue-100">Tạo Phiếu Nhập</a></li>
+          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-blue-100">Loại Hàng Hóa</a></li>
+          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-blue-100">Hàng Hóa</a></li>
+          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-blue-100">Nhân Viên</a></li>
+          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-blue-100">Nhà Kho</a></li>
+          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-blue-100">Thống Kê, Báo Cáo</a></li>
+          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-blue-100">Xuất File, Nhập File</a></li>
         </ul>
         <!-- Footer -->
         <div class="border-t border-gray-200 p-4">

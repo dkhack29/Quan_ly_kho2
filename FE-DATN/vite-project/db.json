@@ -1,0 +1,57 @@
+{
+  "nhanVien": [
+    {
+      "idNhanVien": "49a522ed-edb3-44b6-abf7-e6b1962003cf",
+      "tenNhanVien": "Nguyễn Văn B",
+      "email": "nguyenvanb@gmail.com",
+      "sdt": "0583952546",
+      "diaChi": {
+        "Tinh": "Đồng Nai",
+        "ThanhPho": "Biên Hòa"
+      },
+      "ngaySinh": "2000-12-11T00:00:00Z",
+      "gioiTinh": "Nữ",
+      "chucVu": "User",
+      "trangthai": false,
+      "urlHinh": null,
+      "createdAt": "2025-10-17T03:10:21.639663Z",
+      "updateAt": null,
+      "taiKhoan": null
+    },
+    {
+      "idNhanVien": "93a7d2d3-1cf9-4449-892b-b918affb6cc2",
+      "tenNhanVien": "Nguyễn Văn A",
+      "email": "nguyenvana@gmail.com",
+      "sdt": "0583952546",
+      "diaChi": {
+        "Tinh": "Đồng Nai",
+        "ThanhPho": "Biên Hòa"
+      },
+      "ngaySinh": "2000-12-11T00:00:00Z",
+      "gioiTinh": "Nam",
+      "chucVu": "Admin",
+      "trangthai": true,
+      "urlHinh": null,
+      "createdAt": "2025-10-17T03:08:29.090338Z",
+      "updateAt": null,
+      "taiKhoan": null
+    },
+    {
+      "idNhanVien": "2f5ff16b-f354-41a8-80d4-d2a58e58b525",
+      "tenNhanVien": "Lê Thị C",
+      "email": "lethic@gmail.com",
+      "sdt": "0483753525",
+      "diaChi": {
+        "Tinh": "Lào Cai"
+      },
+      "ngaySinh": "1999-05-12T00:00:00Z",
+      "gioiTinh": "Nam",
+      "chucVu": "Kế toán",
+      "trangthai": false,
+      "urlHinh": null,
+      "createdAt": "2025-10-18T03:53:29.128224Z",
+      "updateAt": null,
+      "taiKhoan": null
+    }
+  ]
+}

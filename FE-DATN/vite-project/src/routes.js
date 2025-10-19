@@ -2,8 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 // Import các trang
 import Home from './views/Home.vue'
-import Profile from './components/Profile.vue'
-import Register from './components/Register.vue'
+import Profile from './components/Profile/Profile.vue'
+import Register from './components/Register/Register.vue'
 
 const routes = [
   {

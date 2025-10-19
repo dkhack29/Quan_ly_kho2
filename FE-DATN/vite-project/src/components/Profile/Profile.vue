@@ -22,12 +22,13 @@
           <a href="mailto:thangdn@gmail.com" class="text-blue-600 hover:underline text-base font-medium">thangdn@gmail.com</a>
         </div>
       </div>
-      <div class="flex gap-4">
+      <div class="flex gap-4 items-center">
         <button @click="toggleEdit" :class="editing ? 'bg-gray-100 text-gray-800' : 'bg-gradient-to-r from-blue-500 to-indigo-500 text-white'" class="px-6 py-2 rounded-full font-semibold shadow-md transition">
           <span v-if="!editing">Chỉnh sửa</span>
           <span v-else>Hủy</span>
         </button>
         <button class="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-2 rounded-full font-semibold shadow-md hover:from-pink-600 hover:to-purple-600 transition">Đổi mật khẩu</button>
+        <button @click="$emit('close')" class="ml-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-200 transition">X</button>
       </div>
     </div>
 
@@ -79,8 +80,9 @@
         <label class="block text-sm text-gray-700 mb-1">Chức vụ</label>
         <input
           type="text"
-          placeholder="Chức vụ của bạn"
-          class="w-full p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-400 outline-none bg-gray-50 shadow-sm"
+          v-model="form.chucVu"
+          readonly
+          class="w-full p-3 border border-gray-200 rounded-xl bg-gray-100 text-gray-600 outline-none shadow-sm"
         />
       </div>
       <div>
@@ -114,7 +116,7 @@
       <div>
         <div class="flex items-center space-x-3">
           <i class="fa-solid fa-envelope text-blue-500 text-xl"></i>
-          <span class="text-gray-900 font-medium text-base">thangdn@gmail.com</span>
+          <span class="text-gray-900 font-medium text-base">{{ form.email }}</span>
         </div>
         <p class="text-sm text-gray-500 mt-1">Đã cập nhật 1 tháng trước</p>
       </div>
@@ -130,16 +132,22 @@
 
 <script setup>
 import { reactive, ref } from 'vue'
+import data from '../../../db.json'
 
 const editing = ref(false)
 const selectOpen = ref(false)
 
+// find Nguyễn Văn A in db
+const employee = (data?.nhanVien || []).find(e => e.tenNhanVien === 'Nguyễn Văn A') || (data?.nhanVien && data.nhanVien[0]) || null
+
 const form = reactive({
-  username: 'thangdn',
-  name: 'Nguyễn Đức Thắng',
-  gender: '',
-  dob: '',
-  phone: ''
+  username: employee && employee.email ? employee.email.split('@')[0] : '',
+  name: employee ? employee.tenNhanVien : '',
+  gender: employee ? employee.gioiTinh : '',
+  dob: employee && employee.ngaySinh ? employee.ngaySinh.slice(0,10) : '',
+  phone: employee ? employee.sdt : '',
+  chucVu: employee ? employee.chucVu : '',
+  email: employee ? employee.email : ''
 })
 
 function toggleEdit() {

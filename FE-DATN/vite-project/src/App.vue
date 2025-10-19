@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue'
-import Sidebar from './components/Sidebar.vue'
-import Register from './components/Register.vue'
-import Profile from './components/Profile.vue'
+import Sidebar from './components/Sidebar_Navbar/Sidebar.vue'
+import Register from './components/Register/Register.vue'
+import Profile from './components/Profile/Profile.vue'
 
 const showRegister = ref(false)
 const showProfile = ref(false)
@@ -23,8 +23,9 @@ function handleSidebarOpen(val) {
     <!-- Register Modal -->
     <Register v-if="showRegister" @close="showRegister = false" />
     <!-- Profile dịch phải khi sidebar mở -->
-    <div :class="sidebarOpen ? 'transition-all duration-300 ml-72' : 'transition-all duration-300 ml-0'">
-      <Profile v-if="showProfile" />
-    </div>
+      <div :class="sidebarOpen ? 'transition-all duration-300 ml-72' : 'transition-all duration-300 ml-0'">
+        <router-view />
+        <Profile v-if="showProfile" @close="showProfile = false" />
+      </div>
   </div>
 </template>
