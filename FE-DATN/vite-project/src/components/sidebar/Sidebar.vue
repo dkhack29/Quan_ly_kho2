@@ -45,6 +45,26 @@ function onKeydown(e) {
   }
 }
 
+const emit = defineEmits(['switch-view', 'open-register'])
+
+function handleLoaiHangClick() {
+  console.log('LoaiHang button clicked')
+  emit('switch-view', 'loai-hang')
+  console.log('Event emitted: loai-hang')
+}
+
+function handleNhaCungCapClick() {
+  console.log('NhaCungCap button clicked')
+  emit('switch-view', 'nha-cung-cap')
+  console.log('Event emitted: nha-cung-cap')
+}
+
+function handleHangHoaClick() {
+  console.log('HangHoa button clicked')
+  emit('switch-view', 'hang-hoa')
+  console.log('Event emitted: hang-hoa')
+}
+
 onMounted(() => {
   window.addEventListener('click', onClickOutside)
   window.addEventListener('keydown', onKeydown)
@@ -181,7 +201,7 @@ onBeforeUnmount(() => {
               ref="userMenuRef"
               class="absolute right-0 top-12 z-50 w-48 bg-white rounded-md shadow-lg py-2 border border-gray-200"
             >
-              <a @click="$emit('open-register'); userMenuOpen = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Register</a>
+              <a @click="emit('open-register'); userMenuOpen = false" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Register</a>
             </div>
           </transition>
         </div>
@@ -233,15 +253,15 @@ onBeforeUnmount(() => {
 
       <nav class="py-2">
         <ul class="space-y-2 font-medium">
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Nhà Cung Cấp</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Tạo Phiếu Xuất</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Tạo Phiếu Nhập</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Loại Hàng Hóa</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Hàng Hóa</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Nhân Viên</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Nhà Kho</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Thống Kê, Báo Cáo</a></li>
-          <li><a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Xuất File, Nhập File</a></li>
+          <li><button @click="handleNhaCungCapClick" class="w-full text-left flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Nhà Cung Cấp</button></li>
+          <li><button @click="() => { console.log('TaoPhieuXuat clicked'); emit('switch-view', 'tao-phieu-xuat') }" class="w-full text-left flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Tạo Phiếu Xuất</button></li>
+          <li><button @click="() => { console.log('TaoPhieuNhap clicked'); emit('switch-view', 'tao-phieu-nhap') }" class="w-full text-left flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Tạo Phiếu Nhập</button></li>
+          <li><button @click="handleLoaiHangClick" class="w-full text-left flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Loại Hàng Hóa</button></li>
+          <li><button @click="handleHangHoaClick" class="w-full text-left flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Hàng Hóa</button></li>
+          <li><button @click="() => { console.log('NhanVien clicked'); emit('switch-view', 'nhan-vien') }" class="w-full text-left flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Nhân Viên</button></li>
+          <li><button @click="() => { console.log('NhaKho clicked'); emit('switch-view', 'nha-kho') }" class="w-full text-left flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Nhà Kho</button></li>
+          <li><button @click="() => { console.log('ThongKe clicked'); emit('switch-view', 'thong-ke') }" class="w-full text-left flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Thống Kê, Báo Cáo</button></li>
+          <li><button @click="() => { console.log('XuatNhapFile clicked'); emit('switch-view', 'xuat-nhap-file') }" class="w-full text-left flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-700 hover:bg-gray-100 dark:hover:bg-slate-400">Xuất File, Nhập File</button></li>
         </ul>
         <!-- Footer -->
         <div class="border-t border-gray-200 p-4">
