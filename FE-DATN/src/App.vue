@@ -9,6 +9,7 @@ import HangHoaForm from './components/forms/HangHoaForm.vue'
 import TaiKhoanForm from './components/forms/TaiKhoanForm.vue'
 import NhanVienForm from './components/forms/NhanVienForm.vue'
 import XuatNhapFileForm from './components/forms/XuatNhapFileForm.vue'
+import PhieuNhapKhoForm from './components/forms/PhieuNhapKhoForm.vue'
 import PhieuXuatKhoForm from './components/forms/PhieuXuatKhoForm.vue'
 import LineChart from './components/ui/Charts/LineChart.vue'
 import BarChart from './components/ui/Charts/BarChart.vue'
@@ -382,8 +383,11 @@ const moneyData = computed(() => ({
         </div>
       </div>
       
-      <!-- Xuất Nhập File -->
-      <XuatNhapFileForm v-else-if="currentView === 'xuat-nhap-file'" />
+        <!-- Xuất Nhập File -->
+        <XuatNhapFileForm v-else-if="currentView === 'xuat-nhap-file'" />
+        
+        <!-- Phiếu Nhập Kho -->
+        <PhieuNhapKhoForm v-else-if="currentView === 'phieu-nhap-kho'" />
       </div>
     </div>
   </div>
