@@ -8,6 +8,7 @@ import NhaCungCapForm from './components/forms/NhaCungCapForm.vue'
 import HangHoaForm from './components/forms/HangHoaForm.vue'
 import TaiKhoanForm from './components/forms/TaiKhoanForm.vue'
 import NhanVienForm from './components/forms/NhanVienForm.vue'
+import XuatNhapFileForm from './components/forms/XuatNhapFileForm.vue'
 import LineChart from './components/ui/Charts/LineChart.vue'
 import BarChart from './components/ui/Charts/BarChart.vue'
 import AreaChart from './components/ui/Charts/AreaChart.vue'
@@ -388,14 +389,7 @@ const moneyData = computed(() => ({
       </div>
       
       <!-- Xuất Nhập File -->
-      <div v-else-if="currentView === 'xuat-nhap-file'" class="min-h-screen bg-gray-100 p-8">
-        <div class="max-w-7xl mx-auto">
-          <div class="bg-white rounded-lg shadow-sm border p-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-4">Xuất File, Nhập File</h1>
-            <p class="text-gray-600">Trang xuất nhập file đang được phát triển...</p>
-          </div>
-        </div>
-      </div>
+      <XuatNhapFileForm v-else-if="currentView === 'xuat-nhap-file'" />
       </div>
     </div>
   </div>
