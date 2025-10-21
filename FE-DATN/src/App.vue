@@ -9,6 +9,7 @@ import HangHoaForm from './components/forms/HangHoaForm.vue'
 import TaiKhoanForm from './components/forms/TaiKhoanForm.vue'
 import NhanVienForm from './components/forms/NhanVienForm.vue'
 import XuatNhapFileForm from './components/forms/XuatNhapFileForm.vue'
+import PhieuXuatKhoForm from './components/forms/PhieuXuatKhoForm.vue'
 import LineChart from './components/ui/Charts/LineChart.vue'
 import BarChart from './components/ui/Charts/BarChart.vue'
 import AreaChart from './components/ui/Charts/AreaChart.vue'
@@ -336,14 +337,7 @@ const moneyData = computed(() => ({
       <TaiKhoanForm v-else-if="currentView === 'tai-khoan'" />
       
       <!-- Tạo Phiếu Xuất -->
-      <div v-else-if="currentView === 'tao-phieu-xuat'" class="min-h-screen bg-gray-100 p-8">
-        <div class="max-w-7xl mx-auto">
-          <div class="bg-white rounded-lg shadow-sm border p-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-4">Tạo Phiếu Xuất</h1>
-            <p class="text-gray-600">Trang tạo phiếu xuất đang được phát triển...</p>
-          </div>
-        </div>
-      </div>
+      <PhieuXuatKhoForm v-else-if="currentView === 'tao-phieu-xuat'" />
       
       <!-- Tạo Phiếu Nhập -->
       <div v-else-if="currentView === 'tao-phieu-nhap'" class="min-h-screen bg-gray-100 p-8">
