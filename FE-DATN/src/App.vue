@@ -1,15 +1,15 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import Sidebar from './components/sidebar/Sidebar.vue'
-import Register from './components/register/Register.vue'
-import Login from './components/Login.vue'
-import LoaiHangForm from './components/LoaiHangForm.vue'
-import NhaCungCapForm from './components/NhaCungCapForm.vue'
-import HangHoaForm from './components/HangHoaForm.vue'
-import TaiKhoanForm from './components/TaiKhoanForm.vue'
-import LineChart from './components/Charts/LineChart.vue'
-import BarChart from './components/Charts/BarChart.vue'
-import AreaChart from './components/Charts/AreaChart.vue'
+import Sidebar from './components/ui/sidebar/Sidebar.vue'
+import Register from './components/auth/register/Register.vue'
+import Login from './components/auth/Login.vue'
+import LoaiHangForm from './components/forms/LoaiHangForm.vue'
+import NhaCungCapForm from './components/forms/NhaCungCapForm.vue'
+import HangHoaForm from './components/forms/HangHoaForm.vue'
+import TaiKhoanForm from './components/forms/TaiKhoanForm.vue'
+import LineChart from './components/ui/Charts/LineChart.vue'
+import BarChart from './components/ui/Charts/BarChart.vue'
+import AreaChart from './components/ui/Charts/AreaChart.vue'
 
 const showRegister = ref(false)
 const showLogin = ref(false)
