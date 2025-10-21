@@ -7,6 +7,7 @@ import LoaiHangForm from './components/forms/LoaiHangForm.vue'
 import NhaCungCapForm from './components/forms/NhaCungCapForm.vue'
 import HangHoaForm from './components/forms/HangHoaForm.vue'
 import TaiKhoanForm from './components/forms/TaiKhoanForm.vue'
+import NhanVienForm from './components/forms/NhanVienForm.vue'
 import LineChart from './components/ui/Charts/LineChart.vue'
 import BarChart from './components/ui/Charts/BarChart.vue'
 import AreaChart from './components/ui/Charts/AreaChart.vue'
@@ -364,14 +365,7 @@ const moneyData = computed(() => ({
       </div>
       
       <!-- Nhân Viên -->
-      <div v-else-if="currentView === 'nhan-vien'" class="min-h-screen bg-gray-100 p-8">
-        <div class="max-w-7xl mx-auto">
-          <div class="bg-white rounded-lg shadow-sm border p-8">
-            <h1 class="text-2xl font-bold text-gray-900 mb-4">Nhân Viên</h1>
-            <p class="text-gray-600">Trang quản lý nhân viên đang được phát triển...</p>
-          </div>
-        </div>
-      </div>
+      <NhanVienForm v-else-if="currentView === 'nhan-vien'" />
       
       <!-- Nhà Kho -->
       <div v-else-if="currentView === 'nha-kho'" class="min-h-screen bg-gray-100 p-8">
