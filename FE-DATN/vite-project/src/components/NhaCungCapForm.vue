@@ -1,24 +1,16 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-    <!-- Header với gradient -->
-    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 shadow-lg">
+  <div class="min-h-screen bg-gray-100">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-          <div class="flex items-center space-x-4">
-            <div class="bg-white/20 p-3 rounded-xl">
-              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-              </svg>
-            </div>
-            <div>
-              <h1 class="text-3xl font-bold text-white">Quản lý Nhà Cung Cấp</h1>
-              <p class="text-blue-100">Quản lý thông tin các nhà cung cấp</p>
-            </div>
+        <div class="flex items-center justify-between h-16">
+          <div class="flex items-center">
+            <h1 class="text-2xl font-bold text-gray-900">Quản lý Nhà Cung Cấp</h1>
           </div>
           <div class="flex items-center space-x-4">
             <button
               @click="showForm = !showForm"
-              class="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-xl flex items-center space-x-2 transition-all duration-200 backdrop-blur-sm"
+              class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
             >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>

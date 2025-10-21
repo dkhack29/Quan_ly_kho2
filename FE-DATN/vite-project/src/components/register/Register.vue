@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 
+const emit = defineEmits(['close', 'register-success', 'show-login'])
+
 const username = ref("");
 const email = ref("");
 const userId = ref("");
@@ -9,14 +11,55 @@ const confirmPassword = ref("");
 
 const showPassword = ref(false);
 const showConfirmPassword = ref(false);
+const isLoading = ref(false);
+const errorMessage = ref("");
 
-const register = () => {
-  if (password.value !== confirmPassword.value) {
-    alert("Mật khẩu xác nhận không khớp!");
+const register = async () => {
+  errorMessage.value = "";
+  
+  // Validation
+  if (!username.value || !email.value || !userId.value || !password.value) {
+    errorMessage.value = "Vui lòng điền đầy đủ thông tin";
     return;
   }
-  console.log("Đăng ký:", username.value, email.value, userId.value, password.value);
-  alert("Đăng ký thành công!");
+  
+  if (password.value !== confirmPassword.value) {
+    errorMessage.value = "Mật khẩu xác nhận không khớp!";
+    return;
+  }
+  
+  if (password.value.length < 6) {
+    errorMessage.value = "Mật khẩu phải có ít nhất 6 ký tự";
+    return;
+  }
+  
+  isLoading.value = true;
+  
+  try {
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    // Mock success
+    emit('register-success', {
+      username: username.value,
+      email: email.value,
+      userId: userId.value
+    });
+    
+    // Reset form
+    username.value = "";
+    email.value = "";
+    userId.value = "";
+    password.value = "";
+    confirmPassword.value = "";
+    
+    alert("Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.");
+    emit('close');
+  } catch (error) {
+    errorMessage.value = "Có lỗi xảy ra, vui lòng thử lại";
+  } finally {
+    isLoading.value = false;
+  }
 };
 </script>
 
@@ -40,6 +83,20 @@ const register = () => {
       <p class="text-gray-500 text-center mt-1">
         Chào mừng đến với công ty <span class="font-medium text-blue-700">Bấu De</span>
       </p>
+
+      <!-- Error Message -->
+      <div v-if="errorMessage" class="mt-4 bg-red-50 border border-red-200 rounded-md p-3">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-red-800">{{ errorMessage }}</p>
+          </div>
+        </div>
+      </div>
 
       <!-- Form -->
       <form class="mt-6 space-y-4" @submit.prevent="register">
@@ -111,9 +168,16 @@ const register = () => {
         <!-- Submit Button -->
         <button
           type="submit"
-          class="w-full py-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-lg shadow-md transition-all duration-200"
+          :disabled="isLoading"
+          class="w-full py-2 bg-blue-700 hover:bg-blue-800 text-white font-semibold rounded-lg shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
         >
-          Đăng ký
+          <span v-if="isLoading" class="mr-2">
+            <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </span>
+          {{ isLoading ? 'Đang đăng ký...' : 'Đăng ký' }}
         </button>
       </form>
 
@@ -136,7 +200,7 @@ const register = () => {
       <!-- Footer -->
       <p class="mt-6 text-sm text-center text-gray-600">
         Bạn đã có tài khoản?
-        <a href="#" class="text-blue-600 hover:underline">Đăng nhập</a>
+        <button @click="$emit('show-login')" class="text-blue-600 hover:underline">Đăng nhập</button>
       </p>
     </div>
   </div>
