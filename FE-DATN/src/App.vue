@@ -10,7 +10,6 @@ import TaiKhoanForm from './components/forms/TaiKhoanForm.vue'
 import NhanVienForm from './components/forms/NhanVienForm.vue'
 import XuatNhapFileForm from './components/forms/XuatNhapFileForm.vue'
 import PhieuNhapKhoForm from './components/forms/PhieuNhapKhoForm.vue'
-import TaoPhieuXuatKhoForm from './components/forms/TaoPhieuXuatKhoForm.vue'
 import PhieuXuatKhoForm from './components/forms/PhieuXuatKhoForm.vue'
 import LineChart from './components/ui/Charts/LineChart.vue'
 import BarChart from './components/ui/Charts/BarChart.vue'
@@ -20,24 +19,9 @@ const showRegister = ref(false)
 const showLogin = ref(false)
 const isLoggedIn = ref(false)
 const currentView = ref('home')
-const showTaoPhieuXuatModal = ref(false)
 
 const switchView = (view) => {
   currentView.value = view
-}
-
-const openTaoPhieuXuatModal = () => {
-  showTaoPhieuXuatModal.value = true
-}
-
-const closeTaoPhieuXuatModal = () => {
-  showTaoPhieuXuatModal.value = false
-}
-
-const savePhieuXuat = (data) => {
-  console.log('Lưu phiếu xuất kho:', data)
-  alert('Tạo phiếu xuất kho thành công!')
-  closeTaoPhieuXuatModal()
 }
 
 const handleLoginSuccess = () => {
@@ -166,31 +150,6 @@ const moneyData = computed(() => ({
       <!-- Home Page -->
       <div v-if="currentView === 'home'" class="min-h-screen bg-gray-100 p-8">
         <div class="max-w-7xl mx-auto">
-          <!-- Quick Actions -->
-          <div class="mb-8">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Thao tác nhanh</h2>
-            <div class="flex flex-wrap gap-4">
-              <button 
-                @click="openTaoPhieuXuatModal"
-                class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg flex items-center space-x-2 transition-colors"
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-                </svg>
-                <span>Tạo phiếu xuất kho</span>
-              </button>
-              <button 
-                @click="switchView('phieu-nhap-kho')"
-                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg flex items-center space-x-2 transition-colors"
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
-                </svg>
-                <span>Tạo phiếu nhập kho</span>
-              </button>
-            </div>
-          </div>
-          
           <!-- Summary Cards Row -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <!-- Card 1: Số lượng nhân viên -->
@@ -430,13 +389,6 @@ const moneyData = computed(() => ({
         <!-- Phiếu Nhập Kho -->
         <PhieuNhapKhoForm v-else-if="currentView === 'phieu-nhap-kho'" />
       </div>
-      
-      <!-- Modal Tạo Phiếu Xuất Kho -->
-      <TaoPhieuXuatKhoForm 
-        v-if="showTaoPhieuXuatModal"
-        @close="closeTaoPhieuXuatModal"
-        @save="savePhieuXuat"
-      />
     </div>
   </div>
 </template>
