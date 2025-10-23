@@ -27,14 +27,14 @@
       <!-- Form Section với card đẹp -->
       <div v-if="showForm" class="mb-8">
         <div class="bg-white rounded-2xl shadow-xl border-0 overflow-hidden">
-          <div class="bg-gradient-to-r from-green-500 to-emerald-600 px-8 py-6">
-            <h2 class="text-2xl font-bold text-white flex items-center">
+          <div class="bg-white border-b border-gray-200 px-8 py-6">
+            <h2 class="text-2xl font-bold text-gray-900 flex items-center">
               <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
               </svg>
               Thông tin nhà cung cấp mới
             </h2>
-            <p class="text-green-100 mt-1">Điền đầy đủ thông tin để tạo nhà cung cấp mới</p>
+            <p class="text-gray-600 mt-1">Điền đầy đủ thông tin để tạo nhà cung cấp mới</p>
           </div>
           
           <form @submit.prevent="handleSubmit" class="p-8">
@@ -161,7 +161,7 @@
               </button>
               <button
                 type="submit"
-                class="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl transition-all duration-200 font-medium flex items-center space-x-2 shadow-lg"
+                class="px-8 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-xl transition-all duration-200 font-medium flex items-center space-x-2 shadow-lg"
               >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
@@ -178,13 +178,13 @@
         <div class="bg-gradient-to-r from-gray-50 to-gray-100 px-8 py-6 border-b">
           <div class="flex items-center justify-between">
             <h3 class="text-xl font-bold text-gray-800 flex items-center">
-              <svg class="w-6 h-6 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6 mr-3 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
               </svg>
               Danh sách nhà cung cấp
             </h3>
             <div class="flex items-center space-x-4">
-              <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+              <div class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
                 {{ items.length }} nhà cung cấp
               </div>
             </div>
@@ -214,10 +214,10 @@
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-              <tr v-for="item in items" :key="item.id" class="hover:bg-blue-50 transition-colors duration-200">
+              <tr v-for="item in items" :key="item.id" class="hover:bg-gray-50 transition-colors duration-200">
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
-                    <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
+                    <div class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium">
                       {{ item.id }}
                     </div>
                   </div>
@@ -236,7 +236,7 @@
                   <div class="flex items-center space-x-3">
                     <button
                       @click="editItem(item)"
-                      class="text-blue-600 hover:text-blue-900 p-2 rounded-lg hover:bg-blue-100 transition-all duration-200"
+                      class="text-gray-600 hover:text-gray-900 p-2 rounded-lg hover:bg-gray-100 transition-all duration-200"
                     >
                       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
